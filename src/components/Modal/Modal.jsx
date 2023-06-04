@@ -3,10 +3,11 @@ import css from "../../styles.module.css";
 
 export default class Modal extends Component {
   render() {
+    const { src, alt, close } = this.props;
     return (
-      <div className={css.Overlay}>
+      <div className={css.Overlay} onClick={close}>
         <div className={css.Modal}>
-          <img src="" alt="" />
+          <img src={src} alt={alt} />
         </div>
       </div>
     );

@@ -12,28 +12,78 @@ export default class App extends Component {
   state = {
     images: [],
     isLoad: false,
+    isModalOpen: false,
     page: 1,
     wordkey: "",
+    modalAlt: "",
+    modalImg: "",
   };
-  fetchImage = async (wordkey) => {
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
     this.setState({ isLoad: true });
-    const response = await fetchImages(wordkey);
-    this.setState({ images: response, isLoad: false, page: 1 ,wordkey: wordkey});
+    const wordkey = e.target.elements.searchInput;
+    if (wordkey.value.trim() === "") {
+      this.setState({ isLoad: false, images: [] });
+      return;
+    }
+    const response = await fetchImages(wordkey.value);
+    this.setState({
+      images: response,
+      isLoad: false,
+      page: 1,
+      wordkey: wordkey.value,
+    });
   };
-  loadMore = async () => {//zapisalem przy fetchu wordkey do state i teraz przy load mam go w state
-    
-const response = await fetchImages()
+  handleloadMore = async () => {
+    this.setState({ isLoad: true });
+    const response = await fetchImages(this.state.wordkey, this.state.page + 1);
+    this.setState({
+      images: [...this.state.images, ...response],
+      isLoad: false,
+      page: this.state.page + 1,
+    });
+  };
+  handleImageOpen = (e) => {
+    this.setState({
+      isModalOpen: true,
+      modalAlt: e.target.alt,
+      modalImg: e.target.name,
+    });
+  };
+  handleModalClose = () => {
+    this.setState({
+      isModalOpen: false,
+      modalImg: "",
+      modalAlt: "",
+    });
+  };
+  handleEscapeKey = (e) => {
+    if (e.code === "Escape") {
+      this.handleModalClose();
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleEscapeKey);
   }
   render() {
-    const { images, isLoad } = this.state;
+    const { images, isLoad, isModalOpen, modalAlt, modalImg } = this.state;
     return (
       <div className={css.box}>
-        <Searchbar fetchImage={this.fetchImage} />
+        <Searchbar onSubmit={this.handleSubmit} />
         {isLoad && <Loader />}
-        {images.length > 0 && <ImageGallery images={images} />}
+        {images.length > 0 && (
+          <ImageGallery images={images} onClick={this.handleImageOpen} />
+        )}
+        {images.length >= 12 && isLoad && <Loader />}
+        {images.length >= 12 && !isLoad && (
+          <Button onClick={this.handleloadMore} />
+        )}
 
-       { images.length>=12 && <Button onClick={this.loadMore} />}
-        <Modal />
+        {isModalOpen && (
+          <Modal src={modalImg} alt={modalAlt} close={this.handleModalClose} />
+        )}
       </div>
     );
   }

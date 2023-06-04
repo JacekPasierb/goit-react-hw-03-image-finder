@@ -4,12 +4,12 @@ import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 
 export default class ImageGallery extends Component {
   render() {
-    const images = this.props.images;
+    const { images, onClick } = this.props;
 
     return (
       <ul className={css.ImageGallery}>
         {images.map((image) => (
-          <ImageGalleryItem key={image.id} image={image} />
+          <ImageGalleryItem key={image.id} image={image} onClick={onClick} />
         ))}
       </ul>
     );
