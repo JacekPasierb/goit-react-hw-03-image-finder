@@ -5,10 +5,13 @@ import ImageGalleryItem from "./ImageGalleryItem/ImageGalleryItem";
 import Loader from "./Loader/Loader";
 import Button from "./Button/Button";
 import Modal from "./Modal/Modal";
+import { fetchImages } from "./API/fetchImage";
 
 export default class App extends Component {
-  fetchImage = (wordkey) => {
-    console.log('poka',wordkey);
+  fetchImage = async (wordkey) => {
+    console.log('poka', wordkey);
+    const response = await fetchImages(wordkey);
+    console.log('res',response);
   }
   render() {
     return (
