@@ -5,16 +5,15 @@ import css from "../../styles.module.css";
 export default class Searchbar extends Component {
   state = {
     wordKey: "",
-  }
-  changeWordKey = e => {
-    this.setState({wordKey: e.target.value})
-  }
-  handleSubmit = e => {
+  };
+  changeWordKey = (e) => {
+    this.setState({ wordKey: e.target.value });
+  };
+  handleSubmit = (e) => {
     e.preventDefault();
     const wordKey = this.state.wordKey;
-    console.log('word', wordKey);
     this.props.fetchImage(wordKey);
-  }
+  };
   render() {
     return (
       <header className={css.Searchbar}>
