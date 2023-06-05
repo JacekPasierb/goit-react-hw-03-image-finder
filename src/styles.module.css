@@ -76,7 +76,7 @@ img {
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -84,6 +84,16 @@ img {
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
+  position: relative;
+}
+
+.SearchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+  cursor: pointer;
 }
 
 .SearchFormButton:hover {
@@ -92,8 +102,8 @@ img {
 
 .SearchFormButtonLabel {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 10px;
+  height: 10px;
   padding: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
@@ -117,7 +127,7 @@ img {
   font: inherit;
   font-size: 18px;
 }
-/* -------------------------------------dotad ok */
+
 /*
  * Стили компонента ImageGallery
  */
@@ -158,7 +168,7 @@ img {
 /*
  * Стили компонента Modal
  */
-/*                            co tojest */
+
 .Overlay {
   position: fixed;
   top: 0;
@@ -170,7 +180,6 @@ img {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-  
 }
 
 .Modal {
