@@ -17,6 +17,5 @@ export const fetchImages = async (wordKey, page) => {
   } catch (error) {
     console.error("Wystąpił błąd podczas pobierania obrazów:", error);
     return [];
-  } 
- 
+  }
 };

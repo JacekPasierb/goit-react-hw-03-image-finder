@@ -1,6 +1,6 @@
-import  { Component } from 'react'
+import { Component } from "react";
 import css from "../../styles.module.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default class Modal extends Component {
   render() {
@@ -17,6 +17,6 @@ export default class Modal extends Component {
 
 Modal.propTypes = {
   src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
   close: PropTypes.func.isRequired,
-}
+};

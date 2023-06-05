@@ -1,6 +1,5 @@
-import { Component } from 'react';
-import { Vortex } from 'react-loader-spinner';
-
+import { Component } from "react";
+import { Vortex } from "react-loader-spinner";
 
 export default class Loader extends Component {
   render() {
