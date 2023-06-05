@@ -7,6 +7,7 @@ import Loader from "./Loader/Loader";
 import Button from "./Button/Button";
 import Modal from "./Modal/Modal";
 import { fetchImages } from "./API/fetchImage";
+import PropTypes from "prop-types";
 
 export default class App extends Component {
   state = {
@@ -15,8 +16,8 @@ export default class App extends Component {
     isModalOpen: false,
     page: 1,
     wordkey: "",
-    modalAlt: "",
-    modalImg: "",
+    modalAlt: "default",
+    modalImg: "default",
   };
 
   handleSubmit = async (e) => {
@@ -88,3 +89,13 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  images: PropTypes.array,
+  isLoad: PropTypes.bool,
+  isModalOpen: PropTypes.bool,
+  page: PropTypes.number,
+  wordkey: PropTypes.string,
+  modalAlt: PropTypes.string,
+  modalImg: PropTypes.string,
+};
