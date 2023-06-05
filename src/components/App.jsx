@@ -1,11 +1,11 @@
 import { Component } from "react";
-import Searchbar from "./Searchbar/Searchbar";
-import ImageGallery from "./ImageGallery/ImageGallery";
+import { Searchbar } from "./Searchbar/Searchbar";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
 import css from "../styles.module.css";
 
-import Loader from "./Loader/Loader";
-import Button from "./Button/Button";
-import Modal from "./Modal/Modal";
+import { Loader } from "./Loader/Loader";
+import { Button } from "./Button/Button";
+import { Modal } from "./Modal/Modal";
 import { fetchImages } from "./API/fetchImage";
 import PropTypes from "prop-types";
 
